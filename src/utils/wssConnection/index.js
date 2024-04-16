@@ -1,3 +1,3 @@
-import { connectWithWebSocket } from "./wssConnection";
+import { connectWithWebSocket, registerNewUser } from "./wssConnection";
 
-export { connectWithWebSocket };
+export { connectWithWebSocket, registerNewUser };
