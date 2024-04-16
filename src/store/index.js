@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import dashboardReducer from "./reducers/dashboardReducer";
-import callReducer from "./reducers/callReducer";
+import dashboardReducer from "./dashboardSlice";
+import callReducer from "./callsSlice";
 
 const store = configureStore({
   reducer: {
