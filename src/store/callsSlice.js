@@ -11,7 +11,7 @@ const callSlice = createSlice({
   name: "call",
   initialState: {
     localStream: null,
-    callState: "CALL_UNAVAILABLE",
+    callState: callStates.CALL_UNAVAILABLE,
     callingDialogVisible: false,
     callerUsername: "",
     callRejected: {

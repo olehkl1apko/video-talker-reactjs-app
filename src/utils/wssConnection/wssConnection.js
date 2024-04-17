@@ -44,3 +44,7 @@ const handleBroadcastEvents = (data) => {
       break;
   }
 };
+
+export const sendUserHangedUp = (data) => {
+  socket.emit("user-hanged-up", data);
+};
