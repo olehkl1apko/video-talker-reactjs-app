@@ -1,26 +1,12 @@
+import { useSelector } from "react-redux";
+
 import "./styles.css";
 import ActiveUsersListItem from "./ActiveUsersListItem";
-
-const activeUsers = [
-  {
-    socketId: 321,
-    username: "Paul",
-  },
-  {
-    socketId: 333,
-    username: "John",
-  },
-  {
-    socketId: 432,
-    username: "Kate",
-  },
-  {
-    socketId: 345,
-    username: "Adam",
-  },
-];
+import { selectActiveUsers } from "@/store/selectors";
 
 export const ActiveUsersList = () => {
+  const activeUsers = useSelector(selectActiveUsers);
+
   return (
     <div className="active_user_list_container">
       {activeUsers.map((activeUser) => (
