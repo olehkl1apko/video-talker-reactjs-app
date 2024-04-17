@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
-import { setUsername } from "../../store/dashboardSlice";
-import { registerNewUser } from "../../utils/wssConnection";
-import logo from "../../resources/logo.png";
-import { UsernameInput } from "../../components/UsernameInput";
-import { SubmitButton } from "../../components/SubmitButton";
+import { setUsername } from "@/store/dashboardSlice";
+import { registerNewUser } from "@/utils/wssConnection";
+import logo from "@/resources/logo.png";
+import { UsernameInput } from "@/components/UsernameInput";
+import { SubmitButton } from "@/components/SubmitButton";
 
 function LoginPage() {
   const dispatch = useDispatch();

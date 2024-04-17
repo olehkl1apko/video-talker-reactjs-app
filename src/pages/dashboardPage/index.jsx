@@ -1,5 +1,5 @@
-import { ActiveUsersList } from "../../components/ActiveUsersList";
-import logo from "../../resources/logo.png";
+import { ActiveUsersList } from "@/components/ActiveUsersList";
+import logo from "@/resources/logo.png";
 
 import "./styles.css";
 
