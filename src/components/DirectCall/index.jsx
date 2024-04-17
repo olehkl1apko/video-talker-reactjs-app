@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { LocalVideoView } from "./LocalVideoView";
 import { RemoteVideoView } from "./RemoteVideoView";
 import {
   selectCallerUsername,
   selectCallingDialogVisible,
+  selectCallRejected,
   selectCallState,
   selectLocalStream,
   selectRemoteStream,
@@ -12,7 +13,7 @@ import {
 import { CallingDialog } from "./CallingDialog";
 import { CallRejectedDialog } from "./CallRejectedDialog";
 import { IncomingCallDialog } from "./IncomingCallDialog";
-import { callStates } from "@/store/callsSlice";
+import { callStates, setCallRejected } from "@/store/callsSlice";
 
 export const DirectCall = () => {
   const localStream = useSelector(selectLocalStream);
@@ -20,6 +21,13 @@ export const DirectCall = () => {
   const callState = useSelector(selectCallState);
   const callerUsername = useSelector(selectCallerUsername);
   const callingDialogVisible = useSelector(selectCallingDialogVisible);
+  const callRejected = useSelector(selectCallRejected);
+
+  const dispatch = useDispatch();
+
+  const hideCallRejectedDialog = (callRejectedDetails) => {
+    dispatch(setCallRejected(callRejectedDetails));
+  };
 
   return (
     <>
@@ -29,7 +37,12 @@ export const DirectCall = () => {
         <IncomingCallDialog callerUsername={callerUsername} />
       )}
       {callingDialogVisible && <CallingDialog />}
-      {/* <CallRejectedDialog/> */}
+      {callRejected.rejected && (
+        <CallRejectedDialog
+          reason={callRejected.reason}
+          hideCallRejectedDialog={hideCallRejectedDialog}
+        />
+      )}
     </>
   );
 };

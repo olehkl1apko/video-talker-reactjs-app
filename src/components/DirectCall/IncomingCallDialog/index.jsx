@@ -1,12 +1,16 @@
 import "./styles.css";
+import {
+  acceptIncomingCallRequest,
+  rejectIncomingCallRequest,
+} from "@/utils/webRTC/webRTCHandler";
 
 export const IncomingCallDialog = ({ callerUsername }) => {
   const handleAcceptButtonPressed = () => {
-    //accept the call
+    acceptIncomingCallRequest();
   };
 
   const handleRejectButtonPressed = () => {
-    //Reject the call
+    rejectIncomingCallRequest();
   };
 
   return (

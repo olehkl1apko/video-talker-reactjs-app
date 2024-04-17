@@ -154,9 +154,9 @@ export const handlePreOfferAnswer = (data) => {
   } else {
     let rejectionReason;
     if (data.answer === preOfferAnswers.CALL_NOT_AVAILABLE) {
-      rejectionReason = "Caller is not able to pick up the call right now";
+      rejectionReason = "Callee is not able to pick up the call right now";
     } else {
-      rejectionReason = "Call rejected by the caller";
+      rejectionReason = "Call rejected by the callee";
     }
     store.dispatch(
       setCallRejected({

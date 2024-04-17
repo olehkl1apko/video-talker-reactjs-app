@@ -16,10 +16,7 @@ let socket;
 export const connectWithWebSocket = () => {
   socket = socketClient(SERVER);
 
-  socket.on("connection", () => {
-    console.log("successfully connected with wss server");
-    console.log(socket.id);
-  });
+  socket.on("connection", () => {});
 
   socket.on("broadcast", (data) => {
     handleBroadcastEvents(data);
