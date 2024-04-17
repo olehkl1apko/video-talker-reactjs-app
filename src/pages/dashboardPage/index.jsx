@@ -1,3 +1,4 @@
+import { ActiveUsersList } from "../../components/ActiveUsersList";
 import logo from "../../resources/logo.png";
 
 import "./styles.css";
@@ -12,7 +13,9 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="dashboard_right_section background_secondary_color">
-        <div className="dashboard_active_users_list">users</div>
+        <div className="dashboard_active_users_list">
+          <ActiveUsersList />
+        </div>
         <div className="dashboard_logo_container">
           <img className="dashboard_logo_image" src={logo} />
         </div>
