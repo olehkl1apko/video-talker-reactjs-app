@@ -1,9 +1,16 @@
+import { useEffect } from "react";
+
 import { ActiveUsersList } from "@/components/ActiveUsersList";
 import logo from "@/resources/logo.png";
+import { getLocalStream } from "@/utils/webRTC/webRTCHandler";
 
 import "./styles.css";
 
 const Dashboard = () => {
+  useEffect(() => {
+    getLocalStream();
+  }, []);
+
   return (
     <div className="dashboard_container background_main_color">
       <div className="dashboard_left_section">

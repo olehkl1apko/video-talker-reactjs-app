@@ -34,10 +34,10 @@ export const registerNewUser = (username) => {
 const handleBroadcastEvents = (data) => {
   switch (data.event) {
     case broadcastEventTypes.ACTIVE_USERS: {
-      // const activeUsers = data.activeUsers.filter(
-      //   (activeUser) => activeUser.socketId !== socket.id
-      // );
-      store.dispatch(setActiveUsers(data.activeUsers));
+      const activeUsers = data.activeUsers.filter(
+        (activeUser) => activeUser.socketId !== socket.id
+      );
+      store.dispatch(setActiveUsers(activeUsers));
       break;
     }
     default:
