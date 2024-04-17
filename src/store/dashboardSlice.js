@@ -14,12 +14,12 @@ const dashboardSlice = createSlice({
     setActiveUsers: (state, action) => {
       state.activeUsers = action.payload;
     },
-    setGroupCallRooms: (state, action) => {
+    setGroupCalls: (state, action) => {
       state.groupCallRooms = action.payload;
     },
   },
 });
 
-export const { setUsername, setActiveUsers, setGroupCallRooms } =
+export const { setUsername, setActiveUsers, setGroupCalls } =
   dashboardSlice.actions;
 export default dashboardSlice.reducer;

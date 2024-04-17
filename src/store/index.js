@@ -8,6 +8,12 @@ const store = configureStore({
     dashboard: dashboardReducer,
     call: callReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["call/setLocalStream"],
+      },
+    }),
 });
 
 export default store;

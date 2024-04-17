@@ -68,7 +68,7 @@ const callSlice = createSlice({
     setGroupCallActive: (state, action) => {
       state.groupCallActive = action.payload;
     },
-    setGroupCallStreams: (state, action) => {
+    setGroupCallIncomingStreams: (state, action) => {
       state.groupCallStreams = action.payload;
     },
     clearGroupCallData: (state) => {
@@ -96,7 +96,7 @@ export const {
   setScreenSharingActive,
   resetCallDataState,
   setGroupCallActive,
-  setGroupCallStreams,
+  setGroupCallIncomingStreams,
   clearGroupCallData,
   setMessage,
 } = callSlice.actions;

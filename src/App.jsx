@@ -1,7 +1,7 @@
 import { useEffect, lazy, Suspense } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
-import { connectWithWebSocket } from "./utils/wssConnection";
+import { connectWithWebSocket } from "./utils/wssConnection/wssConnection";
 const DashboardPage = lazy(() => import("./pages/dashboardPage"));
 const LoginPage = lazy(() => import("./pages/loginPage"));
 import { Loader } from "./components/Loader";

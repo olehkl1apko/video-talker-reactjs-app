@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
 import { setUsername } from "@/store/dashboardSlice";
-import { registerNewUser } from "@/utils/wssConnection";
+import { registerNewUser } from "@/utils/wssConnection/wssConnection";
 import logo from "@/resources/logo.png";
 import { UsernameInput } from "@/components/UsernameInput";
 import { SubmitButton } from "@/components/SubmitButton";
