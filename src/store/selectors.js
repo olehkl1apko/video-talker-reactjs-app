@@ -16,3 +16,4 @@ export const selectLocalMicrophoneEnabled = (state) =>
 export const selectScreenSharingActive = (state) =>
   state.call.screenSharingActive;
 export const selectIsGroupCallActive = (state) => state.call.groupCallActive;
+export const selectGroupCallStreams = (state) => state.call.groupCallStreams;

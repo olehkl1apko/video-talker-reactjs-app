@@ -5,17 +5,7 @@ import { RoomItem } from "./RoomItem";
 import { selectGroupCallRooms } from "@/store/selectors";
 
 const GroupCallRoomsList = () => {
-  // const groupCallRooms = useSelector(selectGroupCallRooms);
-  const groupCallRooms = [
-    {
-      roomId: "111",
-      hostName: "Oleh",
-    },
-    {
-      roomId: "222",
-      hostName: "Luda",
-    },
-  ];
+  const groupCallRooms = useSelector(selectGroupCallRooms);
 
   return (
     <div className="rooms_wrapper">
