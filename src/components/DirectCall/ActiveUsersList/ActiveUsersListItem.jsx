@@ -1,4 +1,4 @@
-import userAvatar from "../../resources/userAvatar.png";
+import userAvatar from "@/resources/userAvatar.png";
 import { callToOtherUser } from "@/utils/webRTC/webRTCHandler";
 import { callStates } from "@/store/callsSlice";
 

@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { LocalVideoView } from "./LocalVideoView";
 import { RemoteVideoView } from "./RemoteVideoView";
+import { ConversationButtons } from "./ConversationButtons";
 import {
   selectCallerUsername,
   selectCallingDialogVisible,
@@ -13,7 +14,12 @@ import {
 import { CallingDialog } from "./CallingDialog";
 import { CallRejectedDialog } from "./CallRejectedDialog";
 import { IncomingCallDialog } from "./IncomingCallDialog";
-import { callStates, setCallRejected } from "@/store/callsSlice";
+import {
+  callStates,
+  setCallRejected,
+  setLocalCameraEnabled,
+  setLocalMicrophoneEnabled,
+} from "@/store/callsSlice";
 
 export const DirectCall = () => {
   const localStream = useSelector(selectLocalStream);
@@ -29,6 +35,14 @@ export const DirectCall = () => {
     dispatch(setCallRejected(callRejectedDetails));
   };
 
+  const handleCameraEnabled = (enabled) => {
+    dispatch(setLocalCameraEnabled(enabled));
+  };
+
+  const handleMicrophoneEnabled = (enabled) => {
+    dispatch(setLocalMicrophoneEnabled(enabled));
+  };
+
   return (
     <>
       <LocalVideoView localStream={localStream} />
@@ -41,6 +55,12 @@ export const DirectCall = () => {
         <CallRejectedDialog
           reason={callRejected.reason}
           hideCallRejectedDialog={hideCallRejectedDialog}
+        />
+      )}
+      {remoteStream && callState === callStates.CALL_IN_PROGRESS && (
+        <ConversationButtons
+          handleCameraEnabled={handleCameraEnabled}
+          handleMicrophoneEnabled={handleMicrophoneEnabled}
         />
       )}
     </>

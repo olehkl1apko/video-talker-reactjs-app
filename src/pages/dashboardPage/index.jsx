@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import "./styles.css";
-import { ActiveUsersList } from "@/components/ActiveUsersList";
+import { ActiveUsersList } from "@/components/DirectCall/ActiveUsersList";
 import { DirectCall } from "@/components/DirectCall";
 import logo from "@/resources/logo.png";
 import { getLocalStream } from "@/utils/webRTC/webRTCHandler";
