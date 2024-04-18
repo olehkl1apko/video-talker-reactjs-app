@@ -10,6 +10,7 @@ import { getLocalStream } from "@/utils/webRTC/webRTCHandler";
 import { connectWithMyPeer } from "@/utils/webRTC/webRTCGroupCallHandler";
 import { selectCallState, selectUsername } from "@/store/selectors";
 import { callStates } from "@/store/callsSlice";
+import GroupCallRoomsList from "@/components/GroupCallRoomsList";
 
 const Dashboard = () => {
   const callState = useSelector(selectCallState);
@@ -30,7 +31,7 @@ const Dashboard = () => {
           )}
         </div>
         <div className="dashboard_rooms_container background_secondary_color">
-          rooms
+          <GroupCallRoomsList />
         </div>
       </div>
       <div className="dashboard_right_section background_secondary_color">
