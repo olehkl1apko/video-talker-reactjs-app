@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+
 import "./styles.css";
 
 export const CallRejectedDialog = ({ reason, hideCallRejectedDialog }) => {

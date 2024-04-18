@@ -17,8 +17,8 @@ export const LocalVideoView = ({ localStream }) => {
   }, [localStream]);
 
   return (
-    <div className="background_secondary_color container">
-      <video className="element" ref={localVideoRef} autoPlay muted />
+    <div className="background_secondary_color local_container">
+      <video className="local_element" ref={localVideoRef} autoPlay muted />
     </div>
   );
 };

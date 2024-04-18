@@ -10,10 +10,7 @@ const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: ["call/setLocalStream", "call/setCallState"],
-        ignoredActionPaths: ["payload.localStream"],
-      },
+      serializableCheck: false,
     }),
 });
 
