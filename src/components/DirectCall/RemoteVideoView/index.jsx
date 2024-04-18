@@ -1,9 +1,12 @@
 import { useRef, useEffect } from "react";
 
 import "./styles.css";
+import { selectCallerUsername } from "@/store/selectors";
+import { useSelector } from "react-redux";
 
 export const RemoteVideoView = ({ remoteStream }) => {
   const remoteVideoRef = useRef();
+  const callerUsername = useSelector(selectCallerUsername);
 
   useEffect(() => {
     if (remoteStream) {
@@ -17,8 +20,9 @@ export const RemoteVideoView = ({ remoteStream }) => {
   }, [remoteStream]);
 
   return (
-    <div className="remote_container">
+    <div className="background_secondary_color remote_container">
       <video className="remote_element" ref={remoteVideoRef} autoPlay />
+      <p>User: {callerUsername}</p>
     </div>
   );
 };
