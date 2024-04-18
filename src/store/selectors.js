@@ -1,4 +1,6 @@
 export const selectActiveUsers = (state) => state.dashboard.activeUsers;
+export const selectUsername = (state) => state.dashboard.username;
+
 export const selectLocalStream = (state) => state.call.localStream;
 export const selectRemoteStream = (state) => state.call.remoteStream;
 export const selectCallState = (state) => state.call.callState;

@@ -1,12 +1,19 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 import "./styles.css";
 import { ActiveUsersList } from "@/components/DirectCall/ActiveUsersList";
 import { DirectCall } from "@/components/DirectCall";
+import DashboardInfo from "@/components/DashboardInfo";
 import logo from "@/resources/logo.png";
 import { getLocalStream } from "@/utils/webRTC/webRTCHandler";
+import { selectCallState, selectUsername } from "@/store/selectors";
+import { callStates } from "@/store/callsSlice";
 
 const Dashboard = () => {
+  const callState = useSelector(selectCallState);
+  const username = useSelector(selectUsername);
+
   useEffect(() => {
     getLocalStream();
   }, []);
@@ -16,6 +23,9 @@ const Dashboard = () => {
       <div className="dashboard_left_section">
         <div className="dashboard_content_container">
           <DirectCall />
+          {callState !== callStates.CALL_IN_PROGRESS && (
+            <DashboardInfo username={username} />
+          )}
         </div>
         <div className="dashboard_rooms_container background_secondary_color">
           rooms
