@@ -4,13 +4,14 @@ import { useSelector } from "react-redux";
 import "./styles.css";
 import { ActiveUsersList } from "@/components/DirectCall/ActiveUsersList";
 import { DirectCall } from "@/components/DirectCall";
+import { GroupCallRoomsList } from "@/components/GroupCallRoomsList";
+import { GroupCall } from "@/components/GroupCall";
 import DashboardInfo from "@/components/DashboardInfo";
 import logo from "@/resources/logo.png";
 import { getLocalStream } from "@/utils/webRTC/webRTCHandler";
 import { connectWithMyPeer } from "@/utils/webRTC/webRTCGroupCallHandler";
 import { selectCallState, selectUsername } from "@/store/selectors";
 import { callStates } from "@/store/callsSlice";
-import GroupCallRoomsList from "@/components/GroupCallRoomsList";
 
 const Dashboard = () => {
   const callState = useSelector(selectCallState);
@@ -26,6 +27,7 @@ const Dashboard = () => {
       <div className="dashboard_left_section">
         <div className="dashboard_content_container">
           <DirectCall />
+          <GroupCall />
           {callState !== callStates.CALL_IN_PROGRESS && (
             <DashboardInfo username={username} />
           )}

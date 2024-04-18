@@ -17,7 +17,7 @@ import {
   leaveGroupCall,
 } from "@/utils/webRTC/webRTCGroupCallHandler";
 
-const GroupCall = () => {
+export const GroupCall = () => {
   const callState = useSelector(selectCallState);
   const localStream = useSelector(selectLocalStream);
   const groupCallActive = useSelector(selectIsGroupCallActive);
@@ -52,5 +52,3 @@ const GroupCall = () => {
 //       dispatch(setLocalMicrophoneEnabled(enabled)),
 //   };
 // };
-
-export default GroupCall;

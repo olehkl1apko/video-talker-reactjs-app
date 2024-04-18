@@ -4,7 +4,7 @@ import "./styles.css";
 import { RoomItem } from "./RoomItem";
 import { selectGroupCallRooms } from "@/store/selectors";
 
-const GroupCallRoomsList = () => {
+export const GroupCallRoomsList = () => {
   const groupCallRooms = useSelector(selectGroupCallRooms);
 
   return (
@@ -15,5 +15,3 @@ const GroupCallRoomsList = () => {
     </div>
   );
 };
-
-export default GroupCallRoomsList;
