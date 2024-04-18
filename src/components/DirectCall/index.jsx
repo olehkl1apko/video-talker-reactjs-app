@@ -46,10 +46,14 @@ export const DirectCall = () => {
   return (
     <>
       <LocalVideoView localStream={localStream} />
-      {remoteStream && <RemoteVideoView remoteStream={remoteStream} />}
+      {remoteStream && callState == callStates.CALL_IN_PROGRESS && (
+        <RemoteVideoView remoteStream={remoteStream} />
+      )}
+
       {callState == callStates.CALL_REQUESTED && (
         <IncomingCallDialog callerUsername={callerUsername} />
       )}
+
       {callingDialogVisible && <CallingDialog />}
       {callRejected.rejected && (
         <CallRejectedDialog
@@ -57,6 +61,7 @@ export const DirectCall = () => {
           hideCallRejectedDialog={hideCallRejectedDialog}
         />
       )}
+
       {remoteStream && callState === callStates.CALL_IN_PROGRESS && (
         <ConversationButtons
           handleCameraEnabled={handleCameraEnabled}

@@ -52,32 +52,32 @@ export const ConversationButtons = ({
   };
 
   return (
-    <div className="button_container">
+    <div className="conversation_button_container">
       <ButtonItem onClickHandler={handleMicButtonPressed}>
         {localMicrophoneEnabled ? (
-          <MdMic className="icon" />
+          <MdMic className="conversation_icon" />
         ) : (
-          <MdMicOff className="icon" />
+          <MdMicOff className="conversation_icon" />
         )}
       </ButtonItem>
       {!isGroupCallActive && (
         <ButtonItem onClickHandler={handleHangUpButtonPressed}>
-          <MdCallEnd className="icon" />
+          <MdCallEnd className="conversation_icon" />
         </ButtonItem>
       )}
       <ButtonItem onClickHandler={handleCameraButtonPressed}>
         {localCameraEnabled ? (
-          <MdVideocam className="icon" />
+          <MdVideocam className="conversation_icon" />
         ) : (
-          <MdVideocamOff className="icon" />
+          <MdVideocamOff className="conversation_icon" />
         )}
       </ButtonItem>
       {!isGroupCallActive && (
         <ButtonItem onClickHandler={handleScreenSharingButtonPressed}>
           {screenSharingActive ? (
-            <MdCamera className="icon" />
+            <MdCamera className="conversation_icon" />
           ) : (
-            <MdVideoLabel className="icon" />
+            <MdVideoLabel className="conversation_icon" />
           )}
         </ButtonItem>
       )}

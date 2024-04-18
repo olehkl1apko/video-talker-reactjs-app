@@ -1,17 +1,17 @@
-.button_container {
+.conversation_button_container {
   display: flex;
   position: absolute;
   bottom: 22%;
   left: 35%;
 }
 
-.icon {
+.conversation_icon {
   width: 25px;
   height: 25px;
   fill: #e6e5e8;
 }
 
-.button {
+.conversation_button {
   width: 50px;
   height: 50px;
   border-radius: 40px;
@@ -27,4 +27,5 @@
   border-style: none;
   border-width: 0px;
   outline: none;
+  cursor: pointer;
 }
