@@ -7,6 +7,7 @@ import { DirectCall } from "@/components/DirectCall";
 import DashboardInfo from "@/components/DashboardInfo";
 import logo from "@/resources/logo.png";
 import { getLocalStream } from "@/utils/webRTC/webRTCHandler";
+import { connectWithMyPeer } from "@/utils/webRTC/webRTCGroupCallHandler";
 import { selectCallState, selectUsername } from "@/store/selectors";
 import { callStates } from "@/store/callsSlice";
 
@@ -16,6 +17,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getLocalStream();
+    connectWithMyPeer();
   }, []);
 
   return (
