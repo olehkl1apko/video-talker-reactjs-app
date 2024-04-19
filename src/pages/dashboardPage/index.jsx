@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 import "./styles.css";
 import { ActiveUsersList } from "@/components/ActiveUsersList";
@@ -11,16 +12,27 @@ import DashboardInfo from "@/components/DashboardInfo";
 import logo from "@/resources/logo.png";
 import { getLocalStream } from "@/utils/webRTC/webRTCHandler";
 import { connectWithMyPeer } from "@/utils/webRTC/webRTCGroupCallHandler";
+import { setTurnServers } from "@/utils/webRTC/TURN";
 import { selectCallState, selectUsername } from "@/store/selectors";
 import { callStates } from "@/store/callsSlice";
+
+const TWILIO_CREDENTIALS_API = import.meta.env.VITE_TWILIO_CREDENTIALS_API;
 
 const Dashboard = () => {
   const callState = useSelector(selectCallState);
   const username = useSelector(selectUsername);
 
   useEffect(() => {
-    getLocalStream();
-    connectWithMyPeer();
+    axios
+      .get(TWILIO_CREDENTIALS_API)
+      .then((responseData) => {
+        setTurnServers(responseData.data.token.iceServers);
+        getLocalStream();
+        connectWithMyPeer();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (

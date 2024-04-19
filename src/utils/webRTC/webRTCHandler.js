@@ -68,6 +68,22 @@ const createPeerConnection = () => {
     store.dispatch(setRemoteStream(stream));
   };
 
+  peerConnection.onicecandidate = (event) => {
+    console.log("DIRECT CALL - greeting candidates from stun server");
+    if (event.candidate) {
+      wss.sendWebRTCCandidate({
+        candidate: event.candidate,
+        connectedUserSocketId: connectedUserSocketId,
+      });
+    }
+  };
+
+  peerConnection.onconnectionstatechange = () => {
+    if (peerConnection.connectionState === "connected") {
+      console.log("DIRECT CALL - successfully connected with other peer");
+    }
+  };
+
   // incoming data channel messages
   peerConnection.ondatachannel = (event) => {
     const dataChannel = event.channel;
@@ -85,22 +101,6 @@ const createPeerConnection = () => {
 
   dataChannel.onopen = () => {
     console.log("chat data channel successfully opened");
-  };
-
-  peerConnection.onicecandidate = (event) => {
-    console.log("greeting candidates from stun server");
-    if (event.candidate) {
-      wss.sendWebRTCCandidate({
-        candidate: event.candidate,
-        connectedUserSocketId: connectedUserSocketId,
-      });
-    }
-  };
-
-  peerConnection.onconnectionstatechange = () => {
-    if (peerConnection.connectionState === "connected") {
-      console.log("successfully connected with other peer");
-    }
   };
 };
 

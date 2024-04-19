@@ -22,7 +22,7 @@ export const connectWithMyPeer = () => {
   });
 
   myPeer.on("open", (id) => {
-    console.log("successfully connected with peer server");
+    console.log("GROUP CALL - successfully connected with peer server");
     myPeerId = id;
   });
 
