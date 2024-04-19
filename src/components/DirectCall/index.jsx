@@ -3,22 +3,25 @@ import { useSelector, useDispatch } from "react-redux";
 import { LocalVideoView } from "./LocalVideoView";
 import { RemoteVideoView } from "./RemoteVideoView";
 import { ConversationButtons } from "../ConversationButtons";
+import { Messenger } from "../Messenger";
+import { CallingDialog } from "./CallingDialog";
+import { CallRejectedDialog } from "./CallRejectedDialog";
+import { IncomingCallDialog } from "./IncomingCallDialog";
 import {
   selectCallerUsername,
   selectCallingDialogVisible,
   selectCallRejected,
   selectCallState,
   selectLocalStream,
+  selectMessage,
   selectRemoteStream,
 } from "@/store/selectors";
-import { CallingDialog } from "./CallingDialog";
-import { CallRejectedDialog } from "./CallRejectedDialog";
-import { IncomingCallDialog } from "./IncomingCallDialog";
 import {
   callStates,
   setCallRejected,
   setLocalCameraEnabled,
   setLocalMicrophoneEnabled,
+  setMessage,
 } from "@/store/callsSlice";
 
 export const DirectCall = () => {
@@ -28,6 +31,7 @@ export const DirectCall = () => {
   const callerUsername = useSelector(selectCallerUsername);
   const callingDialogVisible = useSelector(selectCallingDialogVisible);
   const callRejected = useSelector(selectCallRejected);
+  const message = useSelector(selectMessage);
 
   const dispatch = useDispatch();
 
@@ -41,6 +45,10 @@ export const DirectCall = () => {
 
   const handleMicrophoneEnabled = (enabled) => {
     dispatch(setLocalMicrophoneEnabled(enabled));
+  };
+
+  const handleDirectCallMessage = (received, content) => {
+    dispatch(setMessage(received, content));
   };
 
   return (
@@ -66,6 +74,13 @@ export const DirectCall = () => {
         <ConversationButtons
           handleCameraEnabled={handleCameraEnabled}
           handleMicrophoneEnabled={handleMicrophoneEnabled}
+        />
+      )}
+
+      {remoteStream && callState === callStates.CALL_IN_PROGRESS && (
+        <Messenger
+          message={message}
+          handleDirectCallMessage={handleDirectCallMessage}
         />
       )}
     </>

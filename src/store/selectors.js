@@ -17,3 +17,4 @@ export const selectScreenSharingActive = (state) =>
   state.call.screenSharingActive;
 export const selectIsGroupCallActive = (state) => state.call.groupCallActive;
 export const selectGroupCallStreams = (state) => state.call.groupCallStreams;
+export const selectMessage = (state) => state.call.message;

@@ -34,3 +34,9 @@ code {
 .text_secondary_color {
   color: #8a85ff;
 }
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
