@@ -1,11 +1,8 @@
 import { useSelector } from "react-redux";
 
 import { GroupCallButton } from "./GroupCallButton";
-import {
-  callStates,
-  setLocalCameraEnabled,
-  setLocalMicrophoneEnabled,
-} from "@/store/callsSlice";
+import GroupCallRoom from "./GroupCallRoom";
+import { callStates } from "@/store/callsSlice";
 import {
   selectCallState,
   selectGroupCallStreams,
@@ -21,7 +18,7 @@ export const GroupCall = () => {
   const callState = useSelector(selectCallState);
   const localStream = useSelector(selectLocalStream);
   const groupCallActive = useSelector(selectIsGroupCallActive);
-  // const groupCallStreams = useSelector(selectGroupCallStreams);
+  const groupCallStreams = useSelector(selectGroupCallStreams);
 
   const createRoom = () => {
     createNewGroupCall();
@@ -38,17 +35,10 @@ export const GroupCall = () => {
         callState !== callStates.CALL_IN_PROGRESS && (
           <GroupCallButton onClickHandler={createRoom} label="Create room" />
         )}
+      {groupCallActive && <GroupCallRoom groupCallStreams={groupCallStreams} />}
       {groupCallActive && (
         <GroupCallButton onClickHandler={leaveRoom} label="Leave room" />
       )}
     </>
   );
 };
-
-// const mapActionsToProps = (dispatch) => {
-//   return {
-//     setCameraEnabled: (enabled) => dispatch(setLocalCameraEnabled(enabled)),
-//     setMicrophoneEnabled: (enabled) =>
-//       dispatch(setLocalMicrophoneEnabled(enabled)),
-//   };
-// };

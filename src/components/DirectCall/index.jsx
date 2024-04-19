@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { LocalVideoView } from "./LocalVideoView";
 import { RemoteVideoView } from "./RemoteVideoView";
-import { ConversationButtons } from "./ConversationButtons";
+import { ConversationButtons } from "../ConversationButtons";
 import {
   selectCallerUsername,
   selectCallingDialogVisible,

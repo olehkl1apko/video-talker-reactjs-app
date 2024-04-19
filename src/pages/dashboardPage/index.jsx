@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import "./styles.css";
-import { ActiveUsersList } from "@/components/DirectCall/ActiveUsersList";
+import { ActiveUsersList } from "@/components/ActiveUsersList";
 import { DirectCall } from "@/components/DirectCall";
 import { GroupCallRoomsList } from "@/components/GroupCallRoomsList";
 import { GroupCall } from "@/components/GroupCall";
 import DashboardInfo from "@/components/DashboardInfo";
+
 import logo from "@/resources/logo.png";
 import { getLocalStream } from "@/utils/webRTC/webRTCHandler";
 import { connectWithMyPeer } from "@/utils/webRTC/webRTCGroupCallHandler";

@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 import "./styles.css";
 import ButtonItem from "./ButtonItem";
 import {
-  selectIsGroupCallActive,
   selectLocalCameraEnabled,
   selectLocalMicrophoneEnabled,
   selectLocalStream,
@@ -26,12 +25,12 @@ import {
 export const ConversationButtons = ({
   handleCameraEnabled,
   handleMicrophoneEnabled,
+  isGroupCall,
 }) => {
   const localStream = useSelector(selectLocalStream);
   const localMicrophoneEnabled = useSelector(selectLocalMicrophoneEnabled);
   const localCameraEnabled = useSelector(selectLocalCameraEnabled);
   const screenSharingActive = useSelector(selectScreenSharingActive);
-  const isGroupCallActive = useSelector(selectIsGroupCallActive);
 
   const handleMicButtonPressed = () => {
     localStream.getAudioTracks()[0].enabled = !localMicrophoneEnabled;
@@ -60,7 +59,7 @@ export const ConversationButtons = ({
           <MdMicOff className="conversation_icon" />
         )}
       </ButtonItem>
-      {!isGroupCallActive && (
+      {!isGroupCall && (
         <ButtonItem onClickHandler={handleHangUpButtonPressed}>
           <MdCallEnd className="conversation_icon" />
         </ButtonItem>
@@ -72,7 +71,7 @@ export const ConversationButtons = ({
           <MdVideocamOff className="conversation_icon" />
         )}
       </ButtonItem>
-      {!isGroupCallActive && (
+      {!isGroupCall && (
         <ButtonItem onClickHandler={handleScreenSharingButtonPressed}>
           {screenSharingActive ? (
             <MdCamera className="conversation_icon" />
